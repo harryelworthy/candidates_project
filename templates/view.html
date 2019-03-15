@@ -3,11 +3,15 @@
 <title>Simple tables</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class=page>
+
   <h1>Chances candidates win given they are nominated, based on PredictIt prices</h1>
+
   {% for table in tables %}
     <h2>{{titles[loop.index]}}</h2>
     {{ table|safe }}
   {% endfor %}
+
+
   <body>
     <p>
     This is a simple ticker of what PredictIt thinks the probability that each
@@ -28,7 +32,7 @@
     </p>
 
     <p>
-    In future hope to change colors and make it look nicer, then start tracking
+    In future hope to make it look nicer, then start tracking
     this hourly(ish) and add a chart underneath with moving numbers.
     </p>
 
@@ -39,4 +43,5 @@
     <p>
       <a href="https://github.com/harryelworthy/candidates_project"> Git Repo </a>
   </body>
+
 </div>

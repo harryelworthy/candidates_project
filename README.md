@@ -1,5 +1,7 @@
 # 2020 Candidates Conditional Probabilities of Winning
 
+Running here:
+
 http://34.222.49.203:3000/table
 
 ### Todo
