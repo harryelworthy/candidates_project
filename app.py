@@ -63,6 +63,7 @@ def html_cand_table():
     df.loc[df['rep'] == True,'party'] = 'Republican'
     df = df[['name', 'party', 'conditional chance to win']]
     df = df.set_index('name')
+    del df.index.name
     return df.to_html()
 
 
