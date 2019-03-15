@@ -61,7 +61,7 @@ def html_cand_table():
     df['conditional chance to win'] = df['conditionalProbability'].map('{:,.2f}%'.format)
     df['party'] = 'Democrat'
     df.loc[df['rep'] == True,'party'] = 'Republican'
-    df = df[['name', 'image', 'party', 'conditional chance to win']]
+    df = df[['name', 'party', 'conditional chance to win']]
     return df.to_html()
 
 
