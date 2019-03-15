@@ -7,4 +7,14 @@
     <h2>{{titles[loop.index]}}</h2>
     {{ table|safe }}
   {% endfor %}
+  <body>
+    This is a simple ticker of what PredictIt thinks the probability that each
+    candidate wins is, given that they are nominated to their respective parties.
+    The formula is just P(candidate wins presidency)/P(candidate wins nomination).
+    Who really knows if this is right, I should probably double check. Hope to
+    change colors and make it look nicer, then start tracking this hourly and add
+    a chart underneath with moving numbers.
+
+    harryelworthy@gmail.com
+  </body>
 </div>
