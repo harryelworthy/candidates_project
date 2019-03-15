@@ -83,7 +83,7 @@ app = Flask(__name__)
 @app.route("/table")
 def show_table():
     return render_template('view.html',tables=[html_dem_table(),html_rep_table()],
-    titles = ['Democrats','Republicans'])
+    titles = ['x','Democrats','Republicans'])
 
 if __name__ == "__main__":
     app.run(    host=os.getenv('LISTEN', '0.0.0.0'),
