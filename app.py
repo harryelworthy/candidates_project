@@ -71,7 +71,7 @@ def html_rep_table():
     df['conditionalProbability'] = df['conditionalProbability']*100
     df['conditional chance to win'] = df['conditionalProbability'].map('{:,.2f}%'.format)
     df = df[df['rep'] == True]
-    df = df[['name', 'party', 'conditional chance to win']]
+    df = df[['name', 'conditional chance to win']]
     df = df.set_index('name')
     del df.index.name
     return df.to_html(classes='republicans')
