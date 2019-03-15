@@ -54,17 +54,27 @@ def get_current_cands():
     return pres_candidates
 
 
-def html_cand_table():
+def html_dem_table():
     df = get_current_cands()
     df['image'] = '<img src="' + df['image'].astype(str) + '>'
     df['conditionalProbability'] = df['conditionalProbability']*100
     df['conditional chance to win'] = df['conditionalProbability'].map('{:,.2f}%'.format)
-    df['party'] = 'Democrat'
-    df.loc[df['rep'] == True,'party'] = 'Republican'
+    df = df[df['dem'] == True]
     df = df[['name', 'party', 'conditional chance to win']]
     df = df.set_index('name')
     del df.index.name
-    return df.to_html()
+    return df.to_html(classes='democrats')
+
+def html_rep_table():
+    df = get_current_cands()
+    df['image'] = '<img src="' + df['image'].astype(str) + '>'
+    df['conditionalProbability'] = df['conditionalProbability']*100
+    df['conditional chance to win'] = df['conditionalProbability'].map('{:,.2f}%'.format)
+    df = df[df['rep'] == True]
+    df = df[['name', 'party', 'conditional chance to win']]
+    df = df.set_index('name')
+    del df.index.name
+    return df.to_html(classes='republicans')
 
 
 
@@ -72,8 +82,8 @@ app = Flask(__name__)
 
 @app.route("/table")
 def show_table():
-    return render_template('view.html',tables=[html_cand_table()],
-    titles = ['Chances candidates win given they are nominated, based on PredictIt prices'])
+    return render_template('view.html',tables=[html_dem_table(),html_rep_table()],
+    titles = ['Democrats','Republicans'])
 
 if __name__ == "__main__":
     app.run(    host=os.getenv('LISTEN', '0.0.0.0'),

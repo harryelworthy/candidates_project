@@ -14,8 +14,13 @@ table.dataframe, .dataframe th, .dataframe td {
   font-size: 0.9em;
 }
 
-th {
+.democrats th {
     background-color: #add8e6;
+    color: white;
+}
+
+.republicans th {
+    background-color: #77dd77;
     color: white;
 }
 
