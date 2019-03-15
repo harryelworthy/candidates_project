@@ -1,6 +1,7 @@
 from flask import *
 import pandas as pd
 import requests as req
+import os
 
 BASE_URL = "https://www.predictit.org/api/marketdata/markets/"
 DEM_NOM_ID = 3633
