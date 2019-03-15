@@ -1,4 +1,5 @@
 <!doctype html>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 <title>Simple tables</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class=page>
@@ -11,7 +12,12 @@
     <p>
     This is a simple ticker of what PredictIt thinks the probability that each
     candidate wins is, given that they are nominated to their respective parties.
-    The formula is just P(candidate wins presidency)/P(candidate wins nomination).
+    The formula is:
+    </p>
+
+    $$ P(candidate wins presidency)/P(candidate wins nomination) $$
+
+    <p>
     Who really knows if this is right, I should probably double check. Hope to
     change colors and make it look nicer, then start tracking this hourly and add
     a chart underneath with moving numbers.
