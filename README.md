@@ -17,16 +17,18 @@ python? or what
     * Why conditional probability is important - we want to beat Trump!
 
 
-### Commands run on AWS
+### Installation from scratch on AWS
 
 ```bash
 sudo yum install git
 sudo yum install python3
 sudo yum install python-virtualenv
 git clone ...
-cd ...
+cd candidates_project
 python3 -m venv venv
 source venv/bin/activate
+export FLASK_APP=app.py
+export FLASK_DEBUG=0
 pip3 install -r requirements.txt
-FLASK_APP=app.py FLASK_DEBUG=0 python3 -m flask run --host=0.0.0.0 --port=3000
+flask run --host=0.0.0.0 --port=3000
 ```

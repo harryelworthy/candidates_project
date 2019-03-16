@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS probability;
+
+CREATE TABLE probability (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  dt INTEGER NOT NULL,
+  name TEXT NOT NULL,
+  democrat BOOLEAN NOT NULL,
+  Pnom FLOAT,
+  Ppres FLOAT,
+  Pcond FLOAT
+);
