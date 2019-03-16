@@ -6,7 +6,7 @@ http://34.222.49.203:3000/
 
 ### Todo
 
-* Check that cron job is running - check in hour or two
+* Check that cron job is running - don't think it is
 * Revamp timestamping - get timestamp of just the year/day/hour min 0 or whatever, subtract everything else, then on first runthrough check that none of that timestamp exist. So can easily ping.
 * Work out best way to graph historical data - probably R script that creates
 interactive ggplot html, cron every hour with the new data and then saves to html,
@@ -24,6 +24,7 @@ then view.html bring it in. Maybe try ask stat prof.
 * Try to work out hotter way to do front end - anyone good with this stuff? Or any
 good frameworks? May be easier to make whole view.html come from R script, nicer
 tables etc?
+* Buy www.whobeatstrump.com? Better name?
 
 ### Installation from scratch on AWS
 
