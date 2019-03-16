@@ -12,6 +12,9 @@ http://34.222.49.203:3000/
 * Work out best way to graph historical data - R script to HTML?? or just ggplot
 python? or what
 * Follow up on electionbettingodds.com api/methodology and call/scrape
+* Add more on why this is important:
+    * Why prediction markets are strong
+    * Why conditional probability is important - we want to beat Trump!
 
 
 ### Commands run on AWS
