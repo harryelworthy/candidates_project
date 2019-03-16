@@ -14,7 +14,8 @@ then view.html bring it in. Maybe try ask stat prof.
 * Follow up on electionbettingodds.com methodology tweet
 * Think more about methodology: integrate profit fee/tax in?
     * Probably not super hard. 1/E[payout]. Tough because final profits get 10% off
-    plus any profits made selling along the way?
+    plus any profits made selling along the way? So each one has expected value of 10%
+    less profit? but selling value higher? Need to scribble out
 * Add funds to Betfair account and request API access
     * This would be good to integrate, probably better than PredictIt(?), shouldn't
     be too hard now that I have structure in place
