@@ -27,6 +27,7 @@ tables etc?
 * Buy www.whobeatstrump.com? Better name?
 * Check if PredictIt/Betfair has 'chances Bernie runs as independent' or something
 or try to think if there's any other possible way to check for tail risk
+* Document code better
 
 ### Installation from scratch on AWS
 
