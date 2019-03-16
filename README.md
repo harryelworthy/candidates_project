@@ -19,7 +19,7 @@ python? or what
 
 ### Commands run on AWS
 
-'''bash
+```bash
 sudo yum install git
 sudo yum install python3
 sudo yum install python-virtualenv
@@ -29,4 +29,4 @@ python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
 FLASK_APP=app.py FLASK_DEBUG=0 python3 -m flask run --host=0.0.0.0 --port=3000
-'''
+```
