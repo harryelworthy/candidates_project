@@ -3,6 +3,8 @@ import pandas as pd
 import requests as req
 import os
 
+from .db import get_db
+
 # from .update_probs import get_current_cands
 
 BASE_URL = "https://www.predictit.org/api/marketdata/markets/"
@@ -50,14 +52,36 @@ def get_current_cands():
 
     return df
 
+def get_most_recent():
+    db = get_db()
+    res = db.execute("""
+        SELECT
+          name,
+          Pcond,
+          Ppres,
+          democrat
+        FROM (
+          SELECT
+            *,
+            MAX(dt) as max_date
+          FROM probability
+        ) AS s
+        WHERE dt = max_date
+    """).fetchall()
+    df = pd.DataFrame(res)
+    return df
+    # select all records with that dt
+    # get them into a DF
+
 def html_dem_table():
-    df = get_current_cands()
+    df = get_most_recent()
+    print(df)
+    df = df.rename(columns={0:"name", 1:"Pcond", 2:"Ppres", 3:"democrat"})
     # Drop low candidates, give dumb numbers
-    df = df[df['presidentPrice'] > 0.02]
-    df['image'] = '<img src="' + df['image'].astype(str) + '>'
-    df['conditionalProbability'] = df['conditionalProbability']*100
-    df['conditional chance to win'] = df['conditionalProbability'].map('{:,.2f}%'.format)
-    df = df[df['dem'] == True]
+    df = df[df['Ppres'] > 0.02]
+    df['Pcond'] = df['Pcond']*100
+    df['conditional chance to win'] = df['Pcond'].map('{:,.2f}%'.format)
+    df = df[df['democrat'] == True]
     df = df[['name', 'conditional chance to win']]
     df = df.set_index('name')
     df = df.sort_values(['conditional chance to win'], ascending=[False])
@@ -65,13 +89,13 @@ def html_dem_table():
     return df.to_html(classes='democrats')
 
 def html_rep_table():
-    df = get_current_cands()
+    df = get_most_recent()
+    df = df.rename(columns={0:"name", 1:"Pcond", 2:"Ppres", 3:"democrat"})
     # Drop low candidates, give dumb numbers
-    df = df[df['presidentPrice'] > 0.02]
-    df['image'] = '<img src="' + df['image'].astype(str) + '>'
-    df['conditionalProbability'] = df['conditionalProbability']*100
-    df['conditional chance to win'] = df['conditionalProbability'].map('{:,.2f}'.format)
-    df = df[df['rep'] == True]
+    df = df[df['Ppres'] > 0.02]
+    df['Pcond'] = df['Pcond']*100
+    df['conditional chance to win'] = df['Pcond'].map('{:,.2f}%'.format)
+    df = df[df['democrat'] == False]
     df = df[['name', 'conditional chance to win']]
     df = df.set_index('name')
     df = df.sort_values(['conditional chance to win'], ascending=[False])
