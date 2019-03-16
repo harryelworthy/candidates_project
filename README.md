@@ -6,16 +6,24 @@ http://34.222.49.203:3000/
 
 ### Todo
 
-* Set up SQL table (look at music app)
-* Make api calls feed into SQL table and page load pull from it
-* Split api calls into own module and then cron job to run every 10min (?)
-* Work out best way to graph historical data - R script to HTML?? or just ggplot
-python? or what
-* Follow up on electionbettingodds.com api/methodology and call/scrape
+* Check that cron job is running - check in hour or two
+* Revamp timestamping - get timestamp of just the year/day/hour min 0 or whatever, subtract everything else, then on first runthrough check that none of that timestamp exist. So can easily ping.
+* Work out best way to graph historical data - probably R script that creates
+interactive ggplot html, cron every hour with the new data and then saves to html,
+then view.html bring it in. Maybe try ask stat prof.
+* Follow up on electionbettingodds.com methodology tweet
+* Think more about methodology: integrate profit fee/tax in?
+    * Probably not super hard. 1/E[payout]. Tough because final profits get 10% off
+    plus any profits made selling along the way?
+* Add funds to Betfair account and request API access
+    * This would be good to integrate, probably better than PredictIt(?), shouldn't
+    be too hard now that I have structure in place
 * Add more on why this is important:
     * Why prediction markets are strong
     * Why conditional probability is important - we want to beat Trump!
-
+* Try to work out hotter way to do front end - anyone good with this stuff? Or any
+good frameworks? May be easier to make whole view.html come from R script, nicer
+tables etc?
 
 ### Installation from scratch on AWS
 
@@ -27,8 +35,14 @@ git clone ...
 cd candidates_project
 python3 -m venv venv
 source venv/bin/activate
-export FLASK_APP=app.py
+export FLASK_APP=candidates
 export FLASK_DEBUG=0
 pip3 install -r requirements.txt
-flask run --host=0.0.0.0 --port=3000
+nohup flask run --host=0.0.0.0 --port=3000
+```
+
+Cron job:
+```bash
+SHELL=/bin/bash
+0 1 * * * root source venv/bin/activate && export FLASK_APP=candidates && flask update-probs
 ```
