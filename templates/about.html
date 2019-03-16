@@ -1,0 +1,48 @@
+<!doctype html>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+<title>Simple tables</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+
+  <h1>About</h1>
+
+  <body>
+    <p>
+      <a href="/"> Back to main page </a>
+    </p>
+
+    <p>
+      The formula:
+    </p>
+
+    $$ P(candidate\ wins\ presidency)/P(candidate\ wins\ nomination) $$
+
+    <p>
+      Comes from the conditional probability formula:
+    </p>
+
+    $$ P(A|B) = \frac{P(A \cap B)}{P(B)} $$
+
+    <p>
+      Thus, a clear assumption here is that winning the presidency must mean winning
+      the party nomination (because of the 'and' in the numerator). This means that
+      my model ignores the possibility of a third party or independent winning. This
+      probably drags the democrats ever so slightly above where they should be.
+    </p>
+
+    <p>
+      In future I hope to make this look nicer, a bit interactive, as well as start
+      tracking this hourly(ish) and add a chart underneath with historical rankings.
+    </p>
+
+    <p>
+      I'd also like to make more use of <a href="https://www.betfair.com">betfair.com</a>
+      which has higher higher trade volume than PredictIt and is more accurate according
+      to <a href="https://electionbettingodds.com/about.html">some</a> - I think it
+      may have lower fees? From a cursory glance it would bring these democrat percentages
+      down 10-15% or so depending on the candidate while leaving republicans the same.
+    </p>
+
+  </body>
+
+</div>
