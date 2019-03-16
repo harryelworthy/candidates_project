@@ -25,6 +25,8 @@ then view.html bring it in. Maybe try ask stat prof.
 good frameworks? May be easier to make whole view.html come from R script, nicer
 tables etc?
 * Buy www.whobeatstrump.com? Better name?
+* Check if PredictIt/Betfair has 'chances Bernie runs as independent' or something
+or try to think if there's any other possible way to check for tail risk
 
 ### Installation from scratch on AWS
 
