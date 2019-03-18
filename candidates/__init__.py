@@ -1,4 +1,5 @@
 import os
+from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 
 from flask import Flask
 from . import db
