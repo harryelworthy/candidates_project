@@ -31,7 +31,7 @@ PARTY_ID = 2721
 HEADERS = {'Content-Type':'application/json'}
 PARAMETERS = {'id': str(id), 'responseType': 'JSON'}
 
-scheduler = APScheduler()
+#scheduler = APScheduler()
 
 
 
