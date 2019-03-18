@@ -94,7 +94,8 @@ def get_current_cands():
 
 def update_probs():
     print('Updating Probabilities')
-    add_to_db()
+    with app.app_context():
+        add_to_db()
     return
 
 scheduler = BackgroundScheduler()
