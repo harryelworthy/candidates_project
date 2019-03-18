@@ -95,8 +95,7 @@ scheduler = BackgroundScheduler()
 
 def update_probs():
     print('Updating Probabilities')
-    app = scheduler.app
-    with app.app_context():
+    with db.app.app_context():
         add_to_db()
     return
 
