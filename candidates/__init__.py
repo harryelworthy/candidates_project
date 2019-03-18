@@ -42,11 +42,14 @@ class Config(object):
         {
             'id': 'update_probs',
             'func': '__init__:update_probs',
-            'args': (),
+            'args': (1),
             'trigger': 'interval',
-            'seconds': 30
+            'seconds': 10
         }
     ]
+    SCHEDULER_JOBSTORES = {
+        'default': SQLAlchemyJobStore(url='sqlite:///flask_context.db')
+    }
 
     SCHEDULER_API_ENABLED = True
 
@@ -91,7 +94,7 @@ def get_current_cands():
 # cron examples
 #@scheduler.task('cron', id='update_probs', minute='*')
 #@with_appcontext
-scheduler = BackgroundScheduler()
+#scheduler = BackgroundScheduler()
 
 def update_probs():
     print('Updating Probabilities')
@@ -99,8 +102,8 @@ def update_probs():
         add_to_db()
     return
 
-scheduler.add_job(func=update_probs, trigger="interval", seconds=20)
-scheduler.start()
+#scheduler.add_job(func=update_probs, trigger="interval", seconds=20)
+#scheduler.start()
 
 
 # Shut down the scheduler when exiting the app
@@ -168,11 +171,11 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    #scheduler = APScheduler()
+    scheduler = APScheduler()
     # it is also possible to enable the API directly
     # scheduler.api_enabled = True
-    #scheduler.init_app(app)
-    #scheduler.start()
+    scheduler.init_app(app)
+    scheduler.start()
 
     from . import db
     db.app = app
