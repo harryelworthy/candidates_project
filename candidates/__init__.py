@@ -168,11 +168,11 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    scheduler = APScheduler()
+    #scheduler = APScheduler()
     # it is also possible to enable the API directly
     # scheduler.api_enabled = True
-    scheduler.init_app(app)
-    scheduler.start()
+    #scheduler.init_app(app)
+    #scheduler.start()
 
     from . import db
     db.init_app(app)
