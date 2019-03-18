@@ -28,6 +28,9 @@ PARTY_ID = 2721
 HEADERS = {'Content-Type':'application/json'}
 PARAMETERS = {'id': str(id), 'responseType': 'JSON'}
 
+scheduler = APScheduler()
+
+
 
 
 
@@ -83,6 +86,8 @@ def get_current_cands():
 #@click.command('update-probs')
 #@with_appcontext
 #@cron.interval_schedule(hours=1)
+# cron examples
+@scheduler.task('cron', id='update_probs', minute='*')
 def update_probs():
     print('Updating Probabilities')
     add_to_db()
