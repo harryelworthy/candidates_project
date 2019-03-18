@@ -92,7 +92,7 @@ def get_current_cands():
 #@scheduler.task('cron', id='update_probs', minute='*')
 
 
-
+@with_appcontext
 def update_probs():
     print('Updating Probabilities')
     add_to_db()
