@@ -3,7 +3,10 @@ import os
 from flask import Flask
 from . import db
 
-from flask_apscheduler import APScheduler
+import time
+import atexit
+
+from apscheduler.schedulers.background import BackgroundScheduler
 
 from flask import *
 import pandas as pd
@@ -48,7 +51,6 @@ class Config(object):
     SCHEDULER_API_ENABLED = True
 
 
-
 def request_api(id):
     # Make request
     response = req.get(url=BASE_URL + str(id), json=PARAMETERS, headers=HEADERS)
@@ -87,13 +89,22 @@ def get_current_cands():
 #@with_appcontext
 #@cron.interval_schedule(hours=1)
 # cron examples
-@scheduler.task('cron', id='update_probs', minute='*')
+#@scheduler.task('cron', id='update_probs', minute='*')
+
+
+
 def update_probs():
     print('Updating Probabilities')
     add_to_db()
     return
 
+scheduler = BackgroundScheduler()
+scheduler.add_job(func=update_probs, trigger="interval", seconds=20)
+scheduler.start()
 
+
+# Shut down the scheduler when exiting the app
+atexit.register(lambda: scheduler.shutdown())
 
 def add_to_db():
     db = get_db()
