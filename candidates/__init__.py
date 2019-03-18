@@ -90,9 +90,8 @@ def get_current_cands():
 #@cron.interval_schedule(hours=1)
 # cron examples
 #@scheduler.task('cron', id='update_probs', minute='*')
+#@with_appcontext
 
-
-@with_appcontext
 def update_probs():
     print('Updating Probabilities')
     add_to_db()
