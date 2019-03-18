@@ -84,6 +84,7 @@ def get_current_cands():
 #@with_appcontext
 #@cron.interval_schedule(hours=1)
 def update_probs():
+    print('Updating Probabilities')
     add_to_db()
     return
 
