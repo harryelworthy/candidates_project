@@ -91,14 +91,15 @@ def get_current_cands():
 # cron examples
 #@scheduler.task('cron', id='update_probs', minute='*')
 #@with_appcontext
+scheduler = BackgroundScheduler()
 
 def update_probs():
     print('Updating Probabilities')
+    app = scheduler.app
     with app.app_context():
         add_to_db()
     return
 
-scheduler = BackgroundScheduler()
 scheduler.add_job(func=update_probs, trigger="interval", seconds=20)
 scheduler.start()
 
