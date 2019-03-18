@@ -175,6 +175,7 @@ def create_app(test_config=None):
     #scheduler.start()
 
     from . import db
+    db.app = app
     db.init_app(app)
 
     from . import table
