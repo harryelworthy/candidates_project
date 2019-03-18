@@ -163,5 +163,5 @@ def create_app(test_config=None):
     from . import table
     app.register_blueprint(table.bp)
 
-    app.cli.add_command(update_probs.add_to_db)
+    #app.cli.add_command(update_probs.add_to_db)
     return app
