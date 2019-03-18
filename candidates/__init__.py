@@ -38,7 +38,7 @@ class Config(object):
             'func': '__init__:update_probs',
             'args': (),
             'trigger': 'interval',
-            'hours': 1
+            'seconds': 30
         }
     ]
 
